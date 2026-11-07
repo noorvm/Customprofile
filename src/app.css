@@ -1,0 +1,40 @@
+.card {
+    width: 100%;
+    max-width: 380px;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+}
+
+.profiles-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-items: center;
+}
+
+
+@media (max-width: 900px) {
+    .profiles-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+@media (max-width: 600px) {
+    .profiles-container {
+        grid-template-columns: 1fr;
+    }
+}
