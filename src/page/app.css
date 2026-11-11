@@ -11,23 +11,29 @@ body {
     min-height: 100vh;
 }
 
+
 .card-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 280px);
     justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 40px);
+    align-items: start;
+    gap: 24px;
     width: 100%;
+    margin: 0 auto;
 }
 
+
+
 .card {
-    width: min(100%, 380px);
+    width: 280px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    padding: clamp(16px, 4vw, 24px);
+    padding: 16px;
 }
+
 
 .card-header {
     display: flex;
@@ -144,9 +150,76 @@ body {
     }
 }
 
-/* Tablet and larger screens */
-@media (min-width: 768px) {
-    .card {
-        width: 380px;
+.edit-container {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.edit-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-container input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.edit-container button {
+  padding: 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+}
+
+.edit-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.editCan-btn:hover {
+  background-color: #cd2508;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Laptop */
+@media (max-width: 1250px) {
+    .card-container {
+        grid-template-columns: repeat(3, 280px);
+    }
+}
+
+/* Tablet */
+@media (max-width: 950px) {
+    .card-container {
+        grid-template-columns: repeat(2, 280px);
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: minmax(0, 280px);
     }
 }
