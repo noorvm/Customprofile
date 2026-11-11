@@ -1,17 +1,19 @@
 
-import { profiles } from "./ProfilePage";
 import "./app.css"
 import { QRCodeSVG } from "qrcode.react";
-import { useParams } from "react-router-dom";
-
+import { useParams, useNavigate } from "react-router-dom";
 import {
     Phone,
     Mail,
     Building2,
     MapPin
 } from "lucide-react";
+import { useState } from "react";
 
-function ProfileCard() {
+function ProfileCard({ profiles, setProfiles }) {
+
+    const navigate = useNavigate()
+
 
     const { id } = useParams();
     const user = profiles.find((user) => user.id === Number(id));
@@ -59,8 +61,8 @@ function ProfileCard() {
                             size={80}
                         />
                     </div>
-
-                </div>
+                </div><br />
+                <button className="edit-btn" onClick={()=>navigate(`/profile/${user.id}/edit`)}>✏️ Edit</button>
 
             </div>
         </div>
