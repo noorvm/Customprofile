@@ -1,6 +1,7 @@
 import { Router, Route, Routes } from "react-router-dom";
-import ProfilePage, { profile }from "./page/ProfilePage"
+import ProfilePage from "./page/ProfilePage"
 import ProfileCard from "./page/ProfileCard"
+import {profile } from "./data/profile"
 import EditPage from "./page/EditPage"
 import { useState } from "react";
 import "./app.css"
