@@ -1,6 +1,8 @@
 import "./app.css"
+import "./EditPage.css"
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Camera } from "lucide-react";
 
 
 function EditPage({profiles, setProfiles}){
@@ -22,6 +24,9 @@ function EditPage({profiles, setProfiles}){
         });
     }
 
+    function handleImageChange(){
+      console.log("image re loacted")
+    }
 
     function handleSave(e) {
         e.preventDefault();
@@ -36,71 +41,94 @@ function EditPage({profiles, setProfiles}){
     navigate("/");
   }
 
-  return (
-    <div className="edit-container">
 
-      <h2>Edit Profile</h2>
+return (
+  <div className="edit-container">
 
-      <form onSubmit={handleSave}>
+    <h2 className="edit-heading">Edit Profile</h2>
 
-        <input
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Name"
-        />
+    <div className="profile-preview">
 
-        <input
-          name="role"
-          value={form.role}
-          onChange={handleChange}
-          placeholder="Role"
-        />
+      <img
+        src={form.image || "/default-profile.png"}
+        alt="Profile Preview"
+        className="preview-image"
+      />
 
-        <input
-          name="phone"
-          value={form.phone}
-          onChange={handleChange}
-          placeholder="Phone"
-        />
+      <label htmlFor="profile-upload" className="upload-btn">
+        <Camera size={18} />
+      </label>
 
-        <input
-          name="mail"
-          value={form.mail}
-          onChange={handleChange}
-          placeholder="Email"
-        />
-
-        <input
-          name="company"
-          value={form.company}
-          onChange={handleChange}
-          placeholder="Company"
-        />
-
-        <input
-          name="address"
-          value={form.address}
-          onChange={handleChange}
-          placeholder="Address"
-        />
-
-        <button className="edit-btn" type="submit">
-          Save Changes
-        </button>
-
-        <button
-          className="editCan-btn"
-          type="button"
-          onClick={() => navigate("/")}
-        >
-          Cancel
-        </button>
-
-      </form>
+      <input
+        id="profile-upload"
+        type="file"
+        accept="image/*"
+        onChange={handleImageChange}
+        hidden
+      />
 
     </div>
-    )
+
+    <form onSubmit={handleSave}>
+
+      <input
+        name="name"
+        value={form.name}
+        onChange={handleChange}
+        placeholder="Name"
+      />
+
+      <input
+        name="role"
+        value={form.role}
+        onChange={handleChange}
+        placeholder="Role"
+      />
+
+      <input
+        name="phone"
+        value={form.phone}
+        onChange={handleChange}
+        placeholder="Phone"
+      />
+
+      <input
+        name="mail"
+        value={form.mail}
+        onChange={handleChange}
+        placeholder="Email"
+      />
+
+      <input
+        name="company"
+        value={form.company}
+        onChange={handleChange}
+        placeholder="Company"
+      />
+
+      <input
+        name="address"
+        value={form.address}
+        onChange={handleChange}
+        placeholder="Address"
+      />
+
+      <button className="edit-btn" type="submit">
+        Save Changes
+      </button>
+
+      <button
+        className="editCan-btn"
+        type="button"
+        onClick={() => navigate("/")}
+      >
+        Cancel
+      </button>
+
+    </form>
+  </div>
+);
+
 }
 
 export default EditPage;
