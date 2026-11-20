@@ -24,8 +24,20 @@ function EditPage({profiles, setProfiles}){
         });
     }
 
-    function handleImageChange(){
+    function handleImageChange(e){
       console.log("image re loacted")
+      const file = e.target.files[0];
+
+      if(!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () =>{
+        setForm((prev) => ({
+          ...prev,
+          image: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
     }
 
     function handleSave(e) {
